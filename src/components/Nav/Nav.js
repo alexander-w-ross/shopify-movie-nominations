@@ -10,7 +10,7 @@ import SearchIcon from "@material-ui/icons/Search";
 import { useStyles } from "./NavStyles";
 import Search from "../Search/Search";
 
-const Nav = ({ setSearchResults }) => {
+const Nav = ({ setSearchResults, setQuery, query }) => {
   const classes = useStyles();
 
   return (
@@ -32,7 +32,11 @@ const Nav = ({ setSearchResults }) => {
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
-            <Search setSearchResults={setSearchResults} />
+            <Search
+              setSearchResults={setSearchResults}
+              setQuery={setQuery}
+              query={query}
+            />
           </div>
         </Toolbar>
       </AppBar>
