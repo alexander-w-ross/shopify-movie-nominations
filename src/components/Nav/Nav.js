@@ -8,8 +8,9 @@ import InputBase from "@material-ui/core/InputBase";
 import MenuIcon from "@material-ui/icons/Menu";
 import SearchIcon from "@material-ui/icons/Search";
 import { useStyles } from "./NavStyles";
+import Search from "../Search/Search";
 
-export default function Nav() {
+const Nav = ({ setSearchResults }) => {
   const classes = useStyles();
 
   return (
@@ -31,17 +32,11 @@ export default function Nav() {
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
-            <InputBase
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ "aria-label": "search" }}
-            />
+            <Search setSearchResults={setSearchResults} />
           </div>
         </Toolbar>
       </AppBar>
     </div>
   );
-}
+};
+export default Nav;
