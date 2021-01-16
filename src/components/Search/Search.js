@@ -3,9 +3,8 @@ import PropTypes from "prop-types";
 import { InputBase } from "@material-ui/core";
 import { useStyles } from "./SearchStyles";
 
-const Search = ({ setSearchResults }) => {
+const Search = ({ setSearchResults, setQuery, query }) => {
   const classes = useStyles();
-  const [query, setQuery] = useState("");
   //   const apiURL = "http://www.omdbapi.com/?s=${query}&apikey=cdb9050a";
 
   const handleChange = (event) => {
