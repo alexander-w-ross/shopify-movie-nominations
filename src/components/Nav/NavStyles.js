@@ -7,12 +7,18 @@ export const useStyles = makeStyles((theme) => ({
   menuButton: {
     marginRight: theme.spacing(2),
   },
+  titleRoot: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "baseline",
+  },
   title: {
-    flexGrow: 1,
+    // flexGrow: 1,
     display: "none",
     [theme.breakpoints.up("sm")]: {
       display: "block",
     },
+    marginRight: "20px",
   },
   search: {
     position: "relative",

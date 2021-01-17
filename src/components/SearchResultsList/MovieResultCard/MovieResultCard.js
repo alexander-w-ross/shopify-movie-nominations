@@ -62,6 +62,9 @@ import Typography from "@material-ui/core/Typography";
 import ButtonBase from "@material-ui/core/ButtonBase";
 import { Button } from "@material-ui/core";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { MovieContext } from "../../../providers/movieProvider";
+import NominateButton from "../../NominateButton/NominateButton";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -70,7 +73,8 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     padding: theme.spacing(2),
     margin: "auto",
-    maxWidth: 400,
+    minWidth: 350,
+    maxWidth: 500,
   },
   image: {
     width: 128,
@@ -86,7 +90,9 @@ const useStyles = makeStyles((theme) => ({
 
 const MovieResultCard = ({ Title, Poster, Year, imdbID }) => {
   const classes = useStyles();
-
+  const { addMovie, deleteMovie, nominations } = useContext(MovieContext);
+  let isNominated =
+    nominations.filter((el) => el.id === imdbID).length > 0 ? true : false;
   return (
     <div className={classes.root}>
       <Paper className={classes.paper}>
@@ -114,12 +120,14 @@ const MovieResultCard = ({ Title, Poster, Year, imdbID }) => {
                 </Typography>
               </Grid>
               <Grid item>
-                <Button variant="outlined">Nominate</Button>
+                <NominateButton
+                  Title={Title}
+                  Poster={Poster}
+                  Year={Year}
+                  imdbID={imdbID}
+                />
               </Grid>
             </Grid>
-            {/* <Grid item>
-              <Typography variant="subtitle1">$19.00</Typography>
-            </Grid> */}
           </Grid>
         </Grid>
       </Paper>

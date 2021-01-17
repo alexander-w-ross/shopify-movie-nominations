@@ -4,6 +4,7 @@ import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import ButtonBase from "@material-ui/core/ButtonBase";
+import NominateButton from "../../NominateButton/NominateButton";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -30,7 +31,6 @@ const useStyles = makeStyles((theme) => ({
 const MovieDetails = (props) => {
   const classes = useStyles();
   const [movieDetails, setMovieDetails] = useState(null);
-  const [deets, setDeets] = useState([]);
 
   //   const [movieID, setMovieID] = useState(null);
   let movieID = null;
@@ -97,9 +97,12 @@ const MovieDetails = (props) => {
                   </Typography>
                 </Grid>
                 <Grid item>
-                  <Typography variant="body2" style={{ cursor: "pointer" }}>
-                    Remove
-                  </Typography>
+                  <NominateButton
+                    Title={movieDetails.Title}
+                    Poster={movieDetails.Poster}
+                    Year={movieDetails.Year}
+                    imdbID={imdbID}
+                  />
                 </Grid>
               </Grid>
             </Grid>

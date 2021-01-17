@@ -1,33 +1,44 @@
-import React from "react";
+import React, { useContext } from "react";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import InputBase from "@material-ui/core/InputBase";
-
 import MenuIcon from "@material-ui/icons/Menu";
 import SearchIcon from "@material-ui/icons/Search";
 import { useStyles } from "./NavStyles";
 import Search from "../Search/Search";
+import { Link } from "react-router-dom";
+import { MovieContext } from "../../providers/movieProvider";
+import Banners from "../Banner/Banner";
+import Banner from "react-js-banner";
 
 const Nav = ({ setSearchResults, setQuery, query }) => {
   const classes = useStyles();
-
+  const { nominations } = useContext(MovieContext);
   return (
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="open drawer"
+          <Link
+            to="/"
+            style={{ textDecoration: "none", color: "white", flexGrow: "1" }}
           >
-            <MenuIcon />
-          </IconButton>
-          <Typography className={classes.title} variant="h6" noWrap>
-            Movie Nominations
-          </Typography>
+            <div className={classes.titleRoot}>
+              <Typography
+                className={classes.title}
+                variant="h6"
+                noWrap
+                style={{ cursor: "pointer" }}
+                onClick={() => setQuery("")}
+              >
+                Movie Nominations
+              </Typography>
+              <Typography className={classes.title} variant="subtitle1" noWrap>
+                {nominations.length} / 5
+              </Typography>
+            </div>
+          </Link>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
@@ -40,6 +51,14 @@ const Nav = ({ setSearchResults, setQuery, query }) => {
           </div>
         </Toolbar>
       </AppBar>
+      {/* <Banner nominations={nominations} /> */}
+      {nominations.length >= 5 ? (
+        <Banner
+          title="You've Nominated 5 Movies!!"
+          visibleTime={3000}
+          css={{ color: "#0330FC" }}
+        />
+      ) : null}
     </div>
   );
 };
