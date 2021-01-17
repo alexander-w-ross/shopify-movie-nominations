@@ -3,11 +3,13 @@ import PropTypes from "prop-types";
 import { SearchResultsList } from "../SearchResultsList";
 
 const Home = ({ searchResults, query }) => {
-  console.log("search: ", searchResults);
   return (
     <div>
       {!!query ? (
-        <SearchResultsList searchResults={searchResults} />
+        !!searchResults &&
+        searchResults[0].Response === "True" && (
+          <SearchResultsList searchResults={searchResults} />
+        )
       ) : (
         <div>your nomination list</div>
       )}
