@@ -11,7 +11,7 @@ function App() {
   const [searchResults, setSearchResults] = useState(null);
   const [query, setQuery] = useState("");
   return (
-    <>
+    <div style={{ height: "100%" }}>
       <Nav
         setSearchResults={setSearchResults}
         setQuery={setQuery}
@@ -22,7 +22,7 @@ function App() {
           maxWidth="lg"
           style={{
             outline: "5px dotted red",
-            height: "100vh",
+            height: "100%",
             padding: "10px 10px",
             backgroundColor: "#F5F2EE",
           }}
@@ -32,11 +32,11 @@ function App() {
             render={() => <Home searchResults={searchResults} query={query} />}
             exact
           />
-          <Route path="/details/:id" component={MovieDetails} />
+          <Route path="/details/:imdbID" component={MovieDetails} />
           {/* <SearchResultsList searchResults={searchResults} /> */}
         </Container>
       </Switch>
-    </>
+    </div>
   );
 }
 
