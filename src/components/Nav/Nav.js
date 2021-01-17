@@ -10,7 +10,6 @@ import { useStyles } from "./NavStyles";
 import Search from "../Search/Search";
 import { Link } from "react-router-dom";
 import { MovieContext } from "../../providers/movieProvider";
-import Banners from "../Banner/Banner";
 import Banner from "react-js-banner";
 
 const Nav = ({ setSearchResults, setQuery, query }) => {
@@ -51,7 +50,7 @@ const Nav = ({ setSearchResults, setQuery, query }) => {
           </div>
         </Toolbar>
       </AppBar>
-      {/* <Banner nominations={nominations} /> */}
+
       {nominations.length >= 5 ? (
         <Banner
           title="You've Nominated 5 Movies!!"

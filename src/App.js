@@ -23,7 +23,7 @@ function App() {
           <Container
             maxWidth="lg"
             style={{
-              outline: "5px dotted red",
+              // outline: "5px dotted red",
               height: "100%",
               padding: "10px 10px",
               backgroundColor: "#F5F2EE",

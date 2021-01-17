@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Grid } from "@material-ui/core";
 import MoviePagination from "../MoviePagination/MoviePagination";
 import MovieResultCard from "./MovieResultCard/MovieResultCard";
 
@@ -17,12 +18,21 @@ const SearchResultsList = ({ searchResults }) => {
       {currentMovies.map(({ Poster, Title, Year, imdbID }) => {
         return (
           <div style={{ margin: "10px 10px" }}>
-            <MovieResultCard
-              Poster={Poster}
-              Title={Title}
-              Year={Year}
-              imdbID={imdbID}
-            />
+            <Grid
+              container
+              direction="row"
+              justify="center"
+              alignItems="center"
+            >
+              <Grid item style={{ marginTop: "15px" }}>
+                <MovieResultCard
+                  Poster={Poster}
+                  Title={Title}
+                  Year={Year}
+                  imdbID={imdbID}
+                />
+              </Grid>
+            </Grid>
           </div>
         );
       })}

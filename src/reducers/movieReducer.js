@@ -15,7 +15,7 @@ export const movieReducer = (state, action) => {
       const copiedNoms = [...state.nominations];
       // remove id and save to new array
       let updatedNoms = copiedNoms.filter((el) => el.id !== action.value);
-      //return array
+
       return { ...state, nominations: updatedNoms };
     case actions.RESET:
       return { ...state, ...initialState };

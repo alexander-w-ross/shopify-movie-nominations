@@ -69,11 +69,12 @@ import NominateButton from "../../NominateButton/NominateButton";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    textAlign: "left",
   },
   paper: {
     padding: theme.spacing(2),
-    margin: "auto",
-    minWidth: 350,
+    margin: "10px",
+    minWidth: 500,
     maxWidth: 500,
   },
   image: {
