@@ -1,16 +1,12 @@
 import React, { useContext } from "react";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
-import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
-import InputBase from "@material-ui/core/InputBase";
-import MenuIcon from "@material-ui/icons/Menu";
 import SearchIcon from "@material-ui/icons/Search";
 import { useStyles } from "./NavStyles";
 import Search from "../Search/Search";
 import { Link } from "react-router-dom";
 import { MovieContext } from "../../providers/movieProvider";
-import Banners from "../Banner/Banner";
 import Banner from "react-js-banner";
 
 const Nav = ({ setSearchResults, setQuery, query }) => {
@@ -51,7 +47,7 @@ const Nav = ({ setSearchResults, setQuery, query }) => {
           </div>
         </Toolbar>
       </AppBar>
-      {/* <Banner nominations={nominations} /> */}
+
       {nominations.length >= 5 ? (
         <Banner
           title="You've Nominated 5 Movies!!"

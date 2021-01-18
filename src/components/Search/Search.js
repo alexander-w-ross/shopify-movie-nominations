@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
-import PropTypes from "prop-types";
+import React, { useEffect } from "react";
 import { InputBase } from "@material-ui/core";
 import { useStyles } from "./SearchStyles";
 
 const Search = ({ setSearchResults, setQuery, query }) => {
   const classes = useStyles();
-  //   const apiURL = "http://www.omdbapi.com/?s=${query}&apikey=cdb9050a";
+  const apiKey = process.env.REACT_APP_API_KEY;
 
   const handleChange = (event) => {
     setQuery(event.target.value);
@@ -17,13 +16,11 @@ const Search = ({ setSearchResults, setQuery, query }) => {
 
   const handleSearch = (query) => {
     fetch(
-      `http://www.omdbapi.com/?s=${query}&page=1&type=movie&apikey=cdb9050a`
+      `http://www.omdbapi.com/?s=${query}&page=1&type=movie&apikey=${apiKey}`
     )
-      // fetch(`http://www.omdbapi.com/?t=${query}&type=movie&apikey=cdb9050a`)
       .then((response) => response.json())
       .then((data) => {
         setSearchResults([data]);
-        console.log(data);
       });
   };
 
@@ -39,7 +36,6 @@ const Search = ({ setSearchResults, setQuery, query }) => {
         onChange={handleChange}
         inputProps={{ "aria-label": "search" }}
       />
-      {console.log(`query: ${query}`)}
     </div>
   );
 };
