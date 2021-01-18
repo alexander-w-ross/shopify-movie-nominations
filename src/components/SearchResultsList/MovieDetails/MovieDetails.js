@@ -31,13 +31,14 @@ const useStyles = makeStyles((theme) => ({
 const MovieDetails = (props) => {
   const classes = useStyles();
   const [movieDetails, setMovieDetails] = useState(null);
+  const apiKey = process.env.REACT_APP_API_KEY;
 
   //   const [movieID, setMovieID] = useState(null);
   let movieID = null;
   const { imdbID } = props.match.params;
   movieID = imdbID;
   useEffect(() => {
-    fetch(`http://www.omdbapi.com/?i=${imdbID}&apikey=cdb9050a`)
+    fetch(`http://www.omdbapi.com/?i=${imdbID}&apikey=${apiKey}`)
       .then((response) => response.json())
       .then((data) => {
         setMovieDetails(data);

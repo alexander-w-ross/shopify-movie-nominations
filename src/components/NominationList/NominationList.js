@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import PropTypes from "prop-types";
 import { MovieContext } from "../../providers/movieProvider";
 import { Grid, Typography } from "@material-ui/core";
 import MovieResultCard from "../SearchResultsList/MovieResultCard/MovieResultCard";

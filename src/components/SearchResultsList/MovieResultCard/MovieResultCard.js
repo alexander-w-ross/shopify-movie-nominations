@@ -1,69 +1,10 @@
-// import React from "react";
-// import PropTypes from "prop-types";
-// import { makeStyles } from "@material-ui/core/styles";
-// import Card from "@material-ui/core/Card";
-// import CardActionArea from "@material-ui/core/CardActionArea";
-// import CardActions from "@material-ui/core/CardActions";
-// import CardContent from "@material-ui/core/CardContent";
-// import CardMedia from "@material-ui/core/CardMedia";
-// import Button from "@material-ui/core/Button";
-// import Typography from "@material-ui/core/Typography";
-
-// const useStyles = makeStyles({
-//   root: {
-//     margin: "10px",
-//     maxWidth: 345,
-//   },
-//   media: {
-//     height: 500,
-//   },
-// });
-
-// const MovieResultCard = ({ Poster, Title, Year }) => {
-//   const classes = useStyles();
-//   return (
-//     <Card className={classes.root}>
-//       <CardActionArea>
-//         <CardMedia className={classes.media} image={Poster} title={Title} />
-//         <CardContent>
-//           <Typography
-//             gutterBottom
-//             variant="h5"
-//             component="h2"
-//             style={{ backgroundColor: "#320b86" }}
-//           >
-//             {Title}
-//           </Typography>
-//           <Typography variant="body2" color="textSecondary" component="p">
-//             Year: {Year}
-//           </Typography>
-//         </CardContent>
-//       </CardActionArea>
-//       <CardActions>
-//         <Button size="small" color="primary">
-//           Share
-//         </Button>
-//         <Button size="small" color="primary">
-//           Learn More
-//         </Button>
-//       </CardActions>
-//     </Card>
-//   );
-// };
-
-// MovieResultCard.propTypes = {};
-
-// export default MovieResultCard;
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import ButtonBase from "@material-ui/core/ButtonBase";
-import { Button } from "@material-ui/core";
 import { Link } from "react-router-dom";
-import { useContext } from "react";
-import { MovieContext } from "../../../providers/movieProvider";
 import NominateButton from "../../NominateButton/NominateButton";
 
 const useStyles = makeStyles((theme) => ({
@@ -74,8 +15,14 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     padding: theme.spacing(2),
     margin: "10px",
-    minWidth: 500,
-    maxWidth: 500,
+    [theme.breakpoints.down("sm")]: {
+      minWidth: "315px",
+    },
+    [theme.breakpoints.up("md")]: {
+      minWidth: 500,
+    },
+
+    // maxWidth: 500,
   },
   image: {
     width: 128,
@@ -91,9 +38,6 @@ const useStyles = makeStyles((theme) => ({
 
 const MovieResultCard = ({ Title, Poster, Year, imdbID }) => {
   const classes = useStyles();
-  const { addMovie, deleteMovie, nominations } = useContext(MovieContext);
-  let isNominated =
-    nominations.filter((el) => el.id === imdbID).length > 0 ? true : false;
   return (
     <div className={classes.root}>
       <Paper className={classes.paper}>
