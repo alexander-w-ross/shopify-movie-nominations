@@ -14,7 +14,13 @@ export const initialState = {
 export const movieReducer = (state, action) => {
   switch (action.type) {
     case actions.ADD_MOVIE:
-      let currNoms = getLocalNoms();
+      let currNoms;
+      if (!!getLocalNoms()) {
+        currNoms = getLocalNoms();
+      } else {
+        setLocalNoms([]);
+        currNoms = getLocalNoms();
+      }
       currNoms = [...currNoms, action.value];
       //   localStorage.setItem("nominations", JSON.stringify(currNoms));
       setLocalNoms(currNoms);
