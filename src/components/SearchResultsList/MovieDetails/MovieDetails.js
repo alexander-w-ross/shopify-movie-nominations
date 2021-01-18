@@ -38,7 +38,7 @@ const MovieDetails = (props) => {
   const { imdbID } = props.match.params;
   movieID = imdbID;
   useEffect(() => {
-    fetch(`http://www.omdbapi.com/?i=${imdbID}&apikey=${apiKey}`)
+    fetch(`https://www.omdbapi.com/?i=${imdbID}&apikey=${apiKey}`)
       .then((response) => response.json())
       .then((data) => {
         setMovieDetails(data);

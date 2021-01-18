@@ -16,7 +16,7 @@ const Search = ({ setSearchResults, setQuery, query }) => {
 
   const handleSearch = (query) => {
     fetch(
-      `http://www.omdbapi.com/?s=${query}&page=1&type=movie&apikey=${apiKey}`
+      `https://www.omdbapi.com/?s=${query}&page=1&type=movie&apikey=${apiKey}`
     )
       .then((response) => response.json())
       .then((data) => {
